@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MyContainer extends StatelessWidget {
-  final String iconPath; // Accepts the SVG file path
+  final String iconPath;
   final double? iconSize;
   final Color? iconColor;
   final String text;
 
-  MyContainer({
+  const MyContainer({
     super.key,
     required this.iconPath,
     this.iconSize,

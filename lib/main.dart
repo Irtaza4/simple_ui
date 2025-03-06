@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:screen_design/attendance_screen.dart';
 import 'package:screen_design/home_screen.dart';
 
 void main() {
@@ -12,11 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
 
       ),
-      home: HomeScreen(),
+      home: AttendanceScreen(),
     );
   }
 }

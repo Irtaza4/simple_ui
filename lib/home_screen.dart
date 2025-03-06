@@ -12,6 +12,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    int _currentIndex = 0;
+    List<Widget>screens=[
+      Scaffold(),
+      Center(child: Text('leave'),),
+    ];
     return Scaffold(
       body:Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -51,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             ],
           ),
-          SizedBox(height: 10,),
+          SizedBox(height: 15,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -64,7 +69,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
         ],
       ),
+    bottomNavigationBar: BottomNavigationBar(
+      backgroundColor: Color(0xffAFBE59),
+      currentIndex: _currentIndex,
+        onTap: (index){
+          setState(() {
+            _currentIndex=index;
+          });
+        },
+        items: [
 
+      BottomNavigationBarItem(icon: Icon(Icons.dashboard),label: 'Dashboard'),
+          BottomNavigationBarItem(icon: Icon(Icons.money),label: 'leave'),
+    ]),
     );
   }
 }
