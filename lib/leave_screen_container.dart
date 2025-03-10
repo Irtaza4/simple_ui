@@ -25,7 +25,7 @@ class LeaveScreenContainer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 7),
               child: Text(text ,style: TextStyle(
-                color:textClr,
+                color:textClr ,
                 fontSize: 14,
               ),),
             ),
