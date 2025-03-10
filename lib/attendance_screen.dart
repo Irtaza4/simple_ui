@@ -157,7 +157,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
             )
                 : Center(
               child: Text(
-                'No Attendance Data Available',
+                'No Attendance Data Available ',
                 style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
             ),
