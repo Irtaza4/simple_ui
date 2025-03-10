@@ -1,0 +1,2 @@
+/Users/sanwalkhan/Downloads/simple_ui-master/android/app/.cxx/Debug/61y3k1ty/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/sanwalkhan/Downloads/simple_ui-master/android/app/.cxx/Debug/61y3k1ty/armeabi-v7a/CMakeFiles/rebuild_cache.dir
