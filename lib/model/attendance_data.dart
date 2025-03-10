@@ -31,7 +31,7 @@ class AttendanceEntry {
       clockIn: json['clock_in'] == null || json['clock_in'] == "0000-00-00 00:00:00" ? null : json['clock_in'],
       clockOut: json['clock_out'] == null || json['clock_out'] == "0000-00-00 00:00:00" ? null : json['clock_out'],
       status: json['status_2'],
-      duration: json['durtion'].isEmpty ? "0h:0m" : json['durtion'],
+      duration: json['durtion']==null || json['durtion'].isEmpty ? "0h:0m" : json['durtion'],
       totalBreak: json['total_break'],
     );
   }

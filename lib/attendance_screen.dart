@@ -1,7 +1,7 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:screen_design/break_container.dart';
-
+import 'package:screen_design/functions.dart';
 import 'package:screen_design/model/attendance_data.dart';
 
 class AttendanceScreen extends StatefulWidget {
@@ -23,53 +23,78 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
     "Thursday": [
       {
         "id": "485",
-        "clock_in": "2025-03-03 09:43:00",
-        "clock_out": "2025-03-03 05:43:00",
+        "clock_in": "2025-04-03 09:43:00",
+        "clock_out": "2025-04-03 17:43:00",
         "status_2": "clock_in",
-        "durtion": "",
+        "duration": "8h 0m",
         "total_break": "0h:0m"
       },
       {
         "id": "561",
-        "clock_in": " ",
-        "clock_out": " ",
+        "clock_in": "2025-04-03 09:43:00",
+        "clock_out": "2025-04-03 17:43:00",
         "status_2": "pending",
-        "durtion": "",
+        "duration": "8h 0m",
         "total_break": "0h:0m"
       },
     ]
   };
 
   List<AttendanceData> attendanceData = [];
-  List<AttendanceEntry> data = [];
-
-  int selectedDay = -1;
+  int selectedDay = 0;
 
   @override
   void initState() {
     super.initState();
-    demodata.forEach((key, item) {
-      data.clear();
-      item.forEach((dt) {
-        data.add(AttendanceEntry.fromJson(dt));
-      });
-      attendanceData.add(AttendanceData(list:  data,key: key));
+    _initializeData();
+  }
+
+  void _initializeData() {
+    attendanceData.clear();
+    demodata.forEach((key, value) {
+      List<AttendanceEntry> entries = [];
+      for (var dt in value) {
+        entries.add(AttendanceEntry.fromJson(dt));
+      }
+      attendanceData.add(AttendanceData(list: entries, key: key));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
-          'Timesheet\nManagement',
-          style: TextStyle(
-            color: Colors.blue.shade900,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+        title: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  decoration: BoxDecoration(
+                      color: Color(0xffCAD77F),
+                      borderRadius: BorderRadius.circular(100)),
+                  child: Functions.getSVG('assets/images/three_lines.svg')),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Text(
+                'Timesheet Management',
+                style: TextStyle(
+                  color: Color(0xff282828),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Functions.getSVG('assets/images/bell_icon.svg'),
+          )
+        ],
       ),
       body: Column(
         children: [
@@ -81,23 +106,32 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 scrollDirection: Axis.horizontal,
                 itemCount: demodata.keys.length,
                 itemBuilder: (context, index) {
-                  final days = demodata.keys.toList()[index];
+                  final day = demodata.keys.toList()[index];
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: InkWell(
                       onTap: () {
                         setState(() {
                           selectedDay = index;
                         });
                       },
-                      child: Text(
-                        days,
-                        style: TextStyle(
-                          color: Colors.blueAccent.shade700,
-                          fontSize: 18,
-                          fontWeight: selectedDay == index
-                              ? FontWeight.bold
-                              : FontWeight.normal,
+                      child: Container(
+                        width: 90,
+                        decoration: BoxDecoration(
+                            color: selectedDay == index
+                                ? Color(0xff282828)
+                                : Color(0xffF0F2FF),
+                            borderRadius: BorderRadius.circular(100)),
+                        child: Center(
+                          child: Text(
+                            day,
+                            style: TextStyle(
+                              color: selectedDay == index
+                                  ? Color(0xffFFFFFF)
+                                  : Color(0xff282828),
+                              fontSize: 14,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -106,57 +140,28 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               ),
             ),
           ),
-
-          if(selectedDay!=-1 ) Expanded(
-            child: ListView.builder(
-                  itemCount: attendanceData[selectedDay].list.length,
-                  itemBuilder: (context,index){
-                    return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: BreakContainer(attendanceEntry: attendanceData[selectedDay].list[index])
-                    );
-                  }),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.only(left: 50),
-            child: Text('Feb 26,2025 - Wednesday',style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.blueAccent.shade700,
-              fontSize: 20,
-            ),),
-          ),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 30),
-              child: BarChart(
-                BarChartData(
-                  alignment: BarChartAlignment.spaceAround,
-                  maxY: 10,
-                  barTouchData: BarTouchData(enabled: false),
-                  titlesData: FlTitlesData(
-                    leftTitles: AxisTitles(
-                      sideTitles: SideTitles(showTitles: true, interval: 2),
-                    ),
-                    bottomTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        getTitlesWidget: (double value, TitleMeta meta) {//['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                          return Text(demodata.keys.toList()[value.toInt()]);
-                        },
-                      ),
-                    ),
+            child: attendanceData.isNotEmpty &&
+                selectedDay < attendanceData.length &&
+                attendanceData[selectedDay].list.isNotEmpty
+                ? ListView.builder(
+              itemCount: attendanceData[selectedDay].list.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                  child: BreakContainer(
+                    attendanceEntry: attendanceData[selectedDay].list[index],
                   ),
-                  borderData: FlBorderData(show: false),
-                  barGroups: [
-                    BarChartGroupData(x: 3, barRods: [BarChartRodData(toY: 9, color: Colors.blue)]),
-                    BarChartGroupData(x: 1, barRods: [BarChartRodData(toY: 3, color: Colors.red)]),
-                    BarChartGroupData(x: 2, barRods: [BarChartRodData(toY: 5, color: Colors.red)]),
-                  ],
-                ),
+                );
+              },
+            )
+                : Center(
+              child: Text(
+                'No Attendance Data Available',
+                style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
