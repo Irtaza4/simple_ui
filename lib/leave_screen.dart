@@ -62,6 +62,153 @@ class LeaveScreen extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 30),
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                color: Color(0xff282828),
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Text('Leave Balance',style: TextStyle(
+                        color: Color(0xffCAD77F,),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600
+                      ),),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 200,top: 10),
+                        child: Text('Annual Leave Balance',style: TextStyle(
+                          color: Color(0xffFFFFFF),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600
+                        ),),
+                      ),  
+                      Functions.getSVG('assets/images/line_svg.svg',),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Text('Total',style: TextStyle(
+                                  color: Color(0xffFFFFFF),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700
+                                ),),
+                                Text('28',style: TextStyle(
+                                    color: Color(0xffFFFFFF),
+                                    fontSize: 14,
+
+                                ),),
+                              ],
+                            ),
+                            Functions.getSVG('assets/images/divider_svg.svg'),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 40),
+                              child: Column(
+                                children: [
+                                  Text('Taken',style: TextStyle(
+                                      color: Color(0xffFFFFFF),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700
+                                  ),),
+                                  Text('3',style: TextStyle(
+                                    color: Color(0xffFFFFFF),
+                                    fontSize: 14,
+
+                                  ),),
+                                ],
+                              ),
+                            ),
+                            Functions.getSVG('assets/images/divider_svg.svg'),
+                            Column(
+                              children: [
+                                Text('Remaining',style: TextStyle(
+                                    color: Color(0xffFFFFFF),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700
+                                ),),
+                                Text('25',style: TextStyle(
+                                  color: Color(0xffFFFFFF),
+                                  fontSize: 14,
+
+                                ),),
+                              ],
+                            ),
+                          ],
+                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 200,top: 10),
+                        child: Text('Sick Leave Balance',style: TextStyle(
+                            color: Color(0xffFFFFFF),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600
+                        ),),
+                      ),
+                      Functions.getSVG('assets/images/line_svg.svg',),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              Text('Total',style: TextStyle(
+                                  color: Color(0xffFFFFFF),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700
+                              ),),
+                              Text('0',style: TextStyle(
+                                color: Color(0xffFFFFFF),
+                                fontSize: 14,
+
+                              ),),
+                            ],
+                          ),
+                          Functions.getSVG('assets/images/divider_svg.svg'),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 40),
+                            child: Column(
+                              children: [
+                                Text('Taken',style: TextStyle(
+                                    color: Color(0xffFFFFFF),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700
+                                ),),
+                                Text('0',style: TextStyle(
+                                  color: Color(0xffFFFFFF),
+                                  fontSize: 14,
+
+                                ),),
+                              ],
+                            ),
+                          ),
+                          Functions.getSVG('assets/images/divider_svg.svg'),
+                          Column(
+                            children: [
+                              Text('Remaining',style: TextStyle(
+                                  color: Color(0xffFFFFFF),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700
+                              ),),
+                              Text('0',style: TextStyle(
+                                color: Color(0xffFFFFFF),
+                                fontSize: 14,
+
+                              ),),
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
           )
 
         ],
