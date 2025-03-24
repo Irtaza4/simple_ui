@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:screen_design/attendance_screen.dart';
 import 'package:screen_design/home_screen.dart';
 import 'package:screen_design/leave_screen.dart';
-import 'package:screen_design/profile_screen.dart';
+import 'package:screen_design/profile_screen/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());

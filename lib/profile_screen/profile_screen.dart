@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:screen_design/edit_screens/addresses_edit_screen.dart';
+import 'package:screen_design/edit_screens/bank_details_edit_screen.dart';
+import 'package:screen_design/edit_screens/emergency_edit_screen.dart';
+import 'package:screen_design/edit_screens/key_info_edit_screen.dart';
+import 'package:screen_design/edit_screens/profile_edit_screen.dart';
+import 'package:screen_design/edit_screens/visa_details_edit_screen.dart';
 import 'package:screen_design/functions.dart';
 import 'package:screen_design/model/employee_data.dart';
-import 'package:screen_design/profile_screen_container.dart';
+import 'package:screen_design/profile_screen_container/profile_screen_container.dart';
 
 class ProfileScreen extends StatefulWidget {
    ProfileScreen({super.key});
@@ -151,7 +157,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Column(
                 children: [
         
-                  ProfileScreenContainer(text: 'Personal Details', onTap: (){
+                  ProfileScreenContainer(text: 'Personal Details',onTap2: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=>ProfileEditScreen()));
+                  }, onTap: (){
                      employeeData!.showPersonalInfo=!employeeData!.showPersonalInfo;
                      setState(() {
         
@@ -342,7 +350,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if(employeeData!=null)
               Column(
                 children: [
-                  ProfileScreenContainer(text: 'Addresses', onTap: (){
+                  ProfileScreenContainer(text: 'Addresses',onTap2: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>AddressesEditScreen()));
+                  }, onTap: (){
                     employeeData!.showAddress=!employeeData!.showAddress;
                     setState(() {
         
@@ -365,13 +375,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               child: Column(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Text('Address : ${employeeData!.addresses[index].previousAddress} ,'
-                                          'City : ${employeeData!.addresses[index].city} , Post Code ${employeeData!.addresses[index].postCode}',
-                                      style: TextStyle(color: Colors.white),)
-                                    ],
-                                  )
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Row(
+                                      children: [
+                                        Functions.getSVG('assets/images/location.svg',clr: Color(0xffCAD77F)),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 10,top: 5),
+                                          child: Text('Address : ${employeeData!.addresses[index].previousAddress} ,'
+                                              'City : ${employeeData!.addresses[index].city} , \nPost Code : ${employeeData!.addresses[index].postCode}',
+                                          style: TextStyle(color: Colors.white),),
+                                        ),
+                                        
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                             );
@@ -385,7 +403,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if(employeeData!=null)
               Column(
                 children: [
-                  ProfileScreenContainer(text: 'Emergency Contact', onTap: (){
+                  ProfileScreenContainer(text: 'Emergency Contact', onTap2: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=>EmergencyEditScreen()));
+                  },onTap: (){
                     employeeData!.showEmergencyContact=!employeeData!.showEmergencyContact;
                     setState(() {
         
@@ -732,7 +752,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if(employeeData!=null)
               Column(
                 children: [
-                  ProfileScreenContainer(text: 'Key Info', onTap: (){
+                  ProfileScreenContainer(text: 'Key Info', onTap2: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>KeyInfoEditScreen()));
+                  },onTap: (){
                     employeeData!.showKeyInfo=!employeeData!.showKeyInfo;
                     setState(() {
         
@@ -922,7 +944,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if(employeeData!=null)
               Column(
                 children: [
-                  ProfileScreenContainer(text: 'Visa Details', onTap: (){
+                  ProfileScreenContainer(text: 'Visa Details',onTap2: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>VisaDetailsEditScreen()));
+                     } ,onTap: (){
                     employeeData!.showVisa=!employeeData!.showVisa;
                     setState(() {
         
@@ -1441,7 +1465,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if(employeeData!=null)
               Column(
                 children: [
-                  ProfileScreenContainer(text: 'Bank Details', onTap: (){
+                  ProfileScreenContainer(text: 'Bank Details', onTap2: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=>BankDetailsEditScreen()));
+                  },onTap: (){
                     employeeData!.showBankDetails=!employeeData!.showBankDetails;
                     setState(() {
         
