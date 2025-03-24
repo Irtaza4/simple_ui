@@ -109,7 +109,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
    EmployeeData?  employeeData;
-
+   bool arrow=false;
+   bool arrow2=false;
+  bool arrow3=false;
+  bool arrow4=false;
+  bool arrow5=false;
+  bool arrow6=false;
   @override
   Widget build(BuildContext context) {
 
@@ -157,15 +162,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Column(
                 children: [
         
-                  ProfileScreenContainer(text: 'Personal Details',onTap2: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (_)=>ProfileEditScreen()));
+                  ProfileScreenContainer(text: 'Personal Details',arrow: arrow,onTap2: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=>ProfileEditScreen(personal: employeeData!.personal,)));
                   }, onTap: (){
                      employeeData!.showPersonalInfo=!employeeData!.showPersonalInfo;
                      setState(() {
-        
+                      arrow=!arrow;
                      });
                   }),
                   if(employeeData!.showPersonalInfo)
+
                   Container(
                     decoration:BoxDecoration(
                       color: Color(0xff262626),
@@ -350,12 +356,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if(employeeData!=null)
               Column(
                 children: [
-                  ProfileScreenContainer(text: 'Addresses',onTap2: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (_)=>AddressesEditScreen()));
+                  ProfileScreenContainer(text: 'Addresses',arrow: arrow2,onTap2: (){
+                    // Navigator.push(context, MaterialPageRoute(builder: (_)=>AddressesEditScreen(listOfAddresses: employeeData!.addresses,)));
                   }, onTap: (){
                     employeeData!.showAddress=!employeeData!.showAddress;
                     setState(() {
-        
+                      arrow2=!arrow2;
                     });
                   }),
                   if(employeeData!.showAddress)
@@ -386,7 +392,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               'City : ${employeeData!.addresses[index].city} , \nPost Code : ${employeeData!.addresses[index].postCode}',
                                           style: TextStyle(color: Colors.white),),
                                         ),
-                                        
+
                                       ],
                                     ),
                                   ),
@@ -403,12 +409,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if(employeeData!=null)
               Column(
                 children: [
-                  ProfileScreenContainer(text: 'Emergency Contact', onTap2: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (_)=>EmergencyEditScreen()));
+                  ProfileScreenContainer(text: 'Emergency Contact', arrow: arrow3,onTap2: (){
+                  // Navigator.push(context, MaterialPageRoute(builder: (_)=>EmergencyEditScreen(emergencyContact: employeeData!.emergencyContact,)));
                   },onTap: (){
                     employeeData!.showEmergencyContact=!employeeData!.showEmergencyContact;
                     setState(() {
-        
+                      arrow3=!arrow3;
                     });
                   }),
                   if(employeeData!.showEmergencyContact)
@@ -471,7 +477,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ],
                                   ),
                                 ),
-        
+
                               ],
                             ),
                           ),
@@ -525,7 +531,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ],
                                 ),
                               ),
-        
+
                             ],
                           ),
                           Padding(
@@ -580,8 +586,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ],
                                   ),
                                 ),
-        
-        
+
+
                               ],
                             ),
                           ),
@@ -635,7 +641,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ],
                                 ),
                               ),
-        
+
                             ],
                           ),
                           Padding(
@@ -690,7 +696,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ],
                                   ),
                                 ),
-        
+
                               ],
                             ),
                           ),
@@ -738,7 +744,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ],
                                   ),
                                 ),
-        
+
                               ],
                             ),
                           ),
@@ -752,12 +758,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if(employeeData!=null)
               Column(
                 children: [
-                  ProfileScreenContainer(text: 'Key Info', onTap2: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (_)=>KeyInfoEditScreen()));
+                  ProfileScreenContainer(text: 'Key Info', arrow: arrow4,onTap2: (){
+                    // Navigator.push(context,
+                        // MaterialPageRoute(builder: (_)=>KeyInfoEditScreen(keyInfo: employeeData!.keyInfo,)));
                   },onTap: (){
                     employeeData!.showKeyInfo=!employeeData!.showKeyInfo;
                     setState(() {
-        
+                      arrow4=!arrow4;
                     });
                   }),
                   if(employeeData!.showKeyInfo)
@@ -944,12 +951,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if(employeeData!=null)
               Column(
                 children: [
-                  ProfileScreenContainer(text: 'Visa Details',onTap2: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (_)=>VisaDetailsEditScreen()));
+                  ProfileScreenContainer(text: 'Visa Details',arrow: arrow5,onTap2: (){
+                    // Navigator.push(context,
+                        // MaterialPageRoute(builder: (_)=>VisaDetailsEditScreen(visa: employeeData!.visa,)));
                      } ,onTap: (){
                     employeeData!.showVisa=!employeeData!.showVisa;
                     setState(() {
-        
+                      arrow5=!arrow5;
                     });
                   }),
                   if(employeeData!.showVisa)
@@ -1465,12 +1473,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if(employeeData!=null)
               Column(
                 children: [
-                  ProfileScreenContainer(text: 'Bank Details', onTap2: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>BankDetailsEditScreen()));
+                  ProfileScreenContainer(text: 'Bank Details', arrow: arrow6,onTap2: (){
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (_)=>BankDetailsEditScreen(bankDetails: employeeData!.bankDetails,)));
                   },onTap: (){
                     employeeData!.showBankDetails=!employeeData!.showBankDetails;
                     setState(() {
-        
+                      arrow6=!arrow6;
                     });
                   }),
                   if(employeeData!.showBankDetails)

@@ -6,7 +6,9 @@ class ProfileScreenContainer extends StatelessWidget {
   final String text;
   final void Function()? onTap;
   final void Function()? onTap2;
-const ProfileScreenContainer({super.key,required this.text, required this.onTap,required this.onTap2});
+   final  bool  arrow ;
+
+ ProfileScreenContainer({super.key,required this.text, required this.onTap,required this.onTap2,required this.arrow});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,9 @@ const ProfileScreenContainer({super.key,required this.text, required this.onTap,
           const SizedBox(width: 10,),
           InkWell(
               onTap: onTap,
-              child: Functions.getSVG('assets/images/arrow_down.svg')),
+              child: arrow==false?Functions.getSVG('assets/images/arrow_down.svg'):
+              Functions.getSVG('assets/images/arrow_up.svg',clr: Color(0xff282828),size: 35)
+          ),
         ],)
         ],
       ),
